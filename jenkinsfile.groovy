@@ -6,6 +6,7 @@ pipeline{
 
     stages{
         stage('SCM Checkout'){
+            steps{
              script {
                 def scmVars = checkout([
                 $class: 'GitSCM'
@@ -16,4 +17,5 @@ pipeline{
     }
 
 
+}
 }

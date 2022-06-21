@@ -24,8 +24,8 @@ pipeline{
         }
     }
 
-    stage('Docker build and push'){
-        step{
+    stage ('Docker build and push'){
+        steps{
             sh"""
             docker build -t hello-world:${BUILD_NUMBER}
             docker login -u sreeram12345 -p sreeru123

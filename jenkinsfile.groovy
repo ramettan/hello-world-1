@@ -30,7 +30,7 @@ pipeline{
             sh"""
             docker build -t hello-world:${BUILD_NUMBER} .
             docker login -u sreeram12345 -p sreeru123
-            docker push hello-world:${BUILD_NUMBER}
+            docker push hello-world:${BUILD_NUMBER} >&1 | tee docker.txt
             
             """
         }

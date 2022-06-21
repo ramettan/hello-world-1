@@ -28,7 +28,7 @@ pipeline{
     stage ('Docker build and push'){
         steps{
             sh"""
-            docker build -t hello-world:${BUILD_NUMBER} .
+            docker build -t sreeram12345/hello-world:${BUILD_NUMBER} .
             docker login -u sreeram12345 -p sreeru123
             docker push sreeram12345/hello-world:${BUILD_NUMBER} >&1 | tee docker.txt
             

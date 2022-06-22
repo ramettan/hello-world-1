@@ -31,7 +31,7 @@ pipeline{
             withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'docker_password', usernameVariable: 'docker_user')]){
             sh"""
             docker build -t hello-world:${BUILD_NUMBER} .
-            docker login -u ${docker_user} -p ${docker_password}
+            docker login -u sreeram12345 -p sreeru123
             docker push hello-world:${BUILD_NUMBER}
             
             """

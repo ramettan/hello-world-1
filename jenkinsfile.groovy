@@ -2,10 +2,11 @@ pipeline{
     agent any
     tools{
         maven "maven-3.8.6"
-        
     }
 
     stages{
+
+
         stage('SCM Checkout'){
             steps{
              script {
@@ -27,12 +28,14 @@ pipeline{
 
     stage ('Docker build and push'){
         steps{
+            withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'docker_password', usernameVariable: 'docker_user')]){
             sh"""
-            docker build -t sreeram12345/hello-world:${BUILD_NUMBER} .
-            docker login -u sreeram12345 -p sreeru123
-            docker push sreeram12345/hello-world:${BUILD_NUMBER} >&1 | tee docker.txt
+            docker build -t hello-world:${BUILD_NUMBER} .
+            docker login -u ${docker_password} -p ${docker_user}
+            docker push hello-world:${BUILD_NUMBER}
             
             """
+            }
         }
     }
 
